@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 import random
 import time
+import os
 
 
 class Mensage:
@@ -10,7 +11,7 @@ class Mensage:
        pass
 
 
-    def send_msg(self,driver,name_direct):#adicionar classe e id
+    def send_msg(self,driver):#adicionar classe e id
         list_adress = [[#btn_direct
   '/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div[2]/div/div[1]/section/main/div/header/section[2]/div/div/div[2]/div/div[2]/div',
 
@@ -35,15 +36,13 @@ class Mensage:
             ''
         ]
         ]
-        list_msg = [
-    'abora brinha com abobrinha faz um lanche de abobrinha',
-    'o peito do pe do pedro e preto, qual a cor do peito do pe do pedro',
-    'agua mole em pedra dura tanto bate ate que fura'
-]
-        mensagem = list_msg[random.randint(0,3)]
+        list_msg = []
+        with open (r'chaos\utils\interact\direct\msg_list.txt','r') as file:
+            list_msg = [line.strip() for line in file]
+        mensagem = list_msg[random.randint(0,len(list_msg)-1)]
         btn_direct = TestDriver().find_element(list_adress[0][0],list_adress[0][1],list_adress[0][2],driver)
         btn_direct.click()
-        print(f'indo para o direct {name_direct}')
+        print('indo para o direct')
         time.sleep(random.randint(1,3))
         driver.implicitly_wait(10)
         area_direct = TestDriver().find_element(list_adress[1][0],list_adress[1][1],list_adress[1][2],driver)
@@ -68,14 +67,10 @@ class Mensage:
 
 
 
-
-
-
 #se a conta for privada pula pra proxima, conferir antes da chamar a funcao msg
-'''
-fazendo o usuario digitar a mensagem
-for i in range(3):
-    user_message = input(f'Digite a mensagem {i + 1}: ')
-    my_list.append(user_message)'''
 
+'''for i in range(3):
+    user_message = input(f'Digite a mensagem {i + 1}: ')
+    my_list.append(user_message)
+'''
 

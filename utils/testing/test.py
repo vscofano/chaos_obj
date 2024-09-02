@@ -38,14 +38,4 @@ class TestDriver:
                  print(f'Falha na Conexão. Erro {response}. Vou tentar conectar Novamente')
 
 
-    '''    try:
-            response = requests.get(url)
-            if response.status_code == 200:
-                return True
-            else:
-                return False
-        except requests.RequestException as e:
-            print(f"Connection failed: {e}")
-            return False'''
-
 

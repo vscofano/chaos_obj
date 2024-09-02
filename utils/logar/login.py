@@ -53,31 +53,3 @@ class Login:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-tratamento de erro caso o login de errado
-        try:
-            incorrect_password = TestDriver.driver.find_element(By.XPATH,'//div[@class="_ab2z"]')
-            if incorrect_password:
-                print('Credenciais de Login incorreta, insira informações validas')
-                input_login.clear()
-                input_password.clear()
-                continue
-        except NoSuchElementException:
-            print('Login feito com sucesso')
-            break
-    test.close_popup()
-          '''
-
-
